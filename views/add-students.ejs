@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Add Students</title>
+    <link type="text/css" rel="stylesheet" href="/style.css">
+  </head>
+
+  <body>
+    <h1>Add Students Data</h1>
+    <h3><a href="/students">show all data</a></h3>
+
+    <form action="/students/add" method="post">
+      <label>First Name</label>
+      <input type = "text" name="first_name"></input><br><br>
+      <label>Last Name</label>
+      <input type = "text" name="last_name"></input><br><br>
+      <label>Email</label>
+      <input type = "text" name="email"></input><br><br>
+      <button type="submit">Add Student</button>
+    </form>
+    <br>
+    <br>
+    <a href="/">home</a>
+  </body>
+</html>
