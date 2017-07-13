@@ -22,17 +22,9 @@
             <td><%= t.first_name %></td>
             <td><%= t.last_name %></td>
             <td><%= t.email %></td>
-            <td><a href="teachers/edit/<%= t.id %>">edit</a></td>
-            <td><a href="teachers/delete/<%= t.id %>">delete</a></td>
           </tr>
         <% }) %>
       </table>
-      <br>
-      <br>
-      <form action="/teachers" method="post">
-        <input type = "text" name="nama_teacher" placeholder="nama group"></input>
-        <button type="submit">Add Teacher</button>
-      </form>
       <br>
       <br>
       <a href="/">home</a>

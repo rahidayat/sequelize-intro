@@ -18,17 +18,9 @@
           <tr>
             <td><%= s.id %> </td>
             <td><%= s.subject_name %></td>
-            <td><a href="subjects/edit/<%= s.id %>">edit</a></td>
-            <td><a href="subjects/delete/<%= s.id %>">delete</a></td>
           </tr>
         <% }) %>
       </table>
-      <br>
-      <br>
-      <form action="/subjects" method="post">
-        <input type = "text" name="nama_teacher" placeholder="subject name"></input>
-        <button type="submit">Add Subject</button>
-      </form>
       <br>
       <br>
       <a href="/">home</a>

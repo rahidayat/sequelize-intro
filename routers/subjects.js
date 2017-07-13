@@ -3,7 +3,7 @@ const router = express.Router();
 const model = require ('../models');
 
 router.get('/', (req, res) => {
-  model.Subjects.findAll().then(row => {
+  model.Subject.findAll().then(row => {
     res.render('subjects', {subject_data: row});
   })
 })

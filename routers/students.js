@@ -3,7 +3,7 @@ const router = express.Router();
 const model = require ('../models');
 
 router.get('/', (req, res) => {
-  model.Students.findAll().then(row => {
+  model.Student.findAll().then(row => {
     // res.send(row)
     res.render('students', {students_data: row})
   })
@@ -14,7 +14,7 @@ router.get('/add', (req, res) => {
 })
 
 router.post('/add', (req, res) => {
-  model.Students.create({
+  model.Student.create({
     first_name: req.body.first_name,
     last_name: req.body.last_name,
     email: req.body.email,
@@ -22,6 +22,11 @@ router.post('/add', (req, res) => {
     updatedAt: new Date()
   }).then(row => {res.redirect('/students')})
 
+})
+
+router.get('/delete/:id', (req, res) => {
+  model.Student.destroy({where: {id: req.params.id}})
+  .then(roe => {res.redirect('/students')})
 })
 
 
