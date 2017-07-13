@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Teacher</title>
+    <link type="text/css" rel="stylesheet" href="/style.css">
+  </head>
+
+  <body>
+    <h1>Teachers Data</h1>
+    <div class="title">
+      <table border="1">
+        <tr>
+          <th> ID </th>
+          <th> First Name</th>
+          <th> Last Name</th>
+          <th> Email</th>
+        </tr>
+        <%teacher_data.forEach(t => { %>
+          <tr>
+            <td><%= t.id %> </td>
+            <td><%= t.first_name %></td>
+            <td><%= t.last_name %></td>
+            <td><%= t.email %></td>
+            <td><a href="teachers/edit/<%= t.id %>">edit</a></td>
+            <td><a href="teachers/delete/<%= t.id %>">delete</a></td>
+          </tr>
+        <% }) %>
+      </table>
+      <br>
+      <br>
+      <form action="/teachers" method="post">
+        <input type = "text" name="nama_teacher" placeholder="nama group"></input>
+        <button type="submit">Add Teacher</button>
+      </form>
+      <br>
+      <br>
+      <a href="/">home</a>
+    </div>
+  </body>
+</html>
