@@ -26,9 +26,24 @@ router.post('/add', (req, res) => {
 
 router.get('/delete/:id', (req, res) => {
   model.Student.destroy({where: {id: req.params.id}})
-  .then(roe => {res.redirect('/students')})
+  .then(row => {res.redirect('/students')})
 })
 
+router.get('/edit/:id', (req, res) => {
+  model.Student.findAll({where: {id: req.params.id}})
+  .then(row => {res.render('edit-students', {students_data: row})})
+})
+
+router.post('/edit/:id', (req, res) => {
+  model.Student.update({
+    first_name: req.body.first_name,
+    last_name: req.body.last_name,
+    email: req.body.email,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },{where: {id: req.params.id}})
+  .then(row => {res.redirect('/students')})
+})
 
 
 module.exports = router

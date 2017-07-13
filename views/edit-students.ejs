@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Edit Student Data</title>
+    <link type="text/css" rel="stylesheet" href="/style.css">
+  </head>
+
+  <body>
+    <h1>Edit Student Data</h1>
+    <h3><a href="/students">show all data</a></h3>
+
+    <% students_data.forEach(s => { %>
+    <form action="/students/edit/<%=s.id%>" method="post">
+      <br><br>
+      First Name : <input type="text" name="first_name" value="<%= s.first_name%>"><br>
+      Last Name : <input type="text" name="last_name" value="<%= s.last_name%>"><br>
+      Email : <input type="text" name="email" value="<%=s.email%>"><br>
+      <button type="submit" name="">Edit Student</button>
+    </form>
+    <% }) %>
+    <br><br>
+    <a href="/">home</a>
+  </body>
+</html>
