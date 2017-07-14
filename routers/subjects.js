@@ -3,8 +3,12 @@ const router = express.Router();
 const model = require ('../models');
 
 router.get('/', (req, res) => {
-  model.Subject.findAll().then(row => {
+  model.Subject.findAll({
+    include: [model.Teacher]
+  })
+  .then(row => {
     res.render('subjects', {subject_data: row});
+    console.log('--------'+JSON.stringify(row[0], null, 2))
   })
 })
 

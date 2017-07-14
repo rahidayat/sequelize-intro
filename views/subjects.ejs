@@ -7,17 +7,22 @@
   </head>
 
   <body>
-    <h1>Subject Data</h1>
+    <h1>All Subjects Data</h1>
+
     <div class="title">
       <table border="1">
         <tr>
           <th> ID </th>
           <th> Subject Name</th>
+          <th> Teacher</th>
         </tr>
         <%subject_data.forEach(s => { %>
           <tr>
             <td><%= s.id %> </td>
             <td><%= s.subject_name %></td>
+            <td><%var i = 1; s.Teachers.forEach(t => { %>
+                <%=i++ %>. <%= t.first_name %> <%=t.last_name %><br>
+                <% }) %></td>
           </tr>
         <% }) %>
       </table>
