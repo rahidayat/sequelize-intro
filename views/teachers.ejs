@@ -7,7 +7,8 @@
   </head>
 
   <body>
-    <h1>Teachers Data</h1>
+    <h1>All Teachers Data</h1>
+    <h4><a href="/teachers/add">Add Teachers Data</a></h4>
     <div class="title">
       <table border="1">
         <tr>
@@ -15,6 +16,8 @@
           <th> First Name</th>
           <th> Last Name</th>
           <th> Email</th>
+          <th> Subject</th>
+          <th> Options</th>
         </tr>
         <%teacher_data.forEach(t => { %>
           <tr>
@@ -22,6 +25,11 @@
             <td><%= t.first_name %></td>
             <td><%= t.last_name %></td>
             <td><%= t.email %></td>
+            <td><% if (t.SubjectId != null) {%>
+                <%= t.Subject.subject_name %>
+              <%} else {%>
+                <%= 'Unassigned' %> <% }%></td>
+            <td><a href="teachers/edit/<%= t.id %>">edit</a> | <a href="teachers/delete/<%= t.id %>">delete</a> </td>
           </tr>
         <% }) %>
       </table>

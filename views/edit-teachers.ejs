@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Edit Teachers Data</title>
+    <link type="text/css" rel="stylesheet" href="/style.css">
+  </head>
+
+  <body>
+    <h1>Edit Teachers Data</h1>
+    <h3><a href="/teachers">show all data</a></h3>
+
+    <% teachers_data.forEach(t => { %>
+    <form action="/teachers/edit/<%=t.id%>" method="post">
+      <br><br>
+      First Name : <input type="text" name="first_name" value="<%= t.first_name%>"><br>
+      Last Name : <input type="text" name="last_name" value="<%= t.last_name%>"><br>
+      Email : <input type="text" name="email" value="<%=t.email%>"><br>
+
+      <select name= "SubjectId" class="form_control">
+        <% subjects_data.forEach(s => {
+          var selected = ""
+          if(t.SubjectId == s.id){
+            selected = "selected"
+          }%>
+        <option value="<%= s.id %>"<%= selected %>><%= s.subject_name %></option>
+        <% }) %>
+      </select><br><br>
+      <button type="submit" name="">Edit Teacher</button>
+    </form>
+    <% }) %>
+    <br><br>
+    <a href="/">home</a>
+  </body>
+</html>

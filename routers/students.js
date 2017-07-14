@@ -20,17 +20,22 @@ router.post('/add', (req, res) => {
     email: req.body.email,
     createdAt: new Date(),
     updatedAt: new Date()
-  }).then(row => {res.redirect('/students')})
+  })
+  .then(row => {res.redirect('/students')})
 
 })
 
 router.get('/delete/:id', (req, res) => {
-  model.Student.destroy({where: {id: req.params.id}})
+  model.Student.destroy({
+    where: {id: req.params.id}
+  })
   .then(row => {res.redirect('/students')})
 })
 
 router.get('/edit/:id', (req, res) => {
-  model.Student.findAll({where: {id: req.params.id}})
+  model.Student.findAll({
+    where: {id: req.params.id}
+  })
   .then(row => {res.render('edit-students', {students_data: row})})
 })
 
@@ -41,8 +46,11 @@ router.post('/edit/:id', (req, res) => {
     email: req.body.email,
     createdAt: new Date(),
     updatedAt: new Date()
-  },{where: {id: req.params.id}})
+  },{
+    where: {id: req.params.id}
+  })
   .then(row => {res.redirect('/students')})
+  .catch(err => {email.validate.msg})
 })
 
 
