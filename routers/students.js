@@ -64,8 +64,11 @@ router.get('/:id/addsubject', (req, res) => {
 })
 
 router.post('/:id/addsubject', (req,res) => {
-  model.Student.update(req.body, {
-    where: {id: req.params.id}
+  model.StudentSubject.create({
+    StudentId: req.params.id,
+    SubjectId: req.body.SubjectId,
+    createdAt: new Date(),
+    updatedAt: new Date()
   })
   .then(row => {res.redirect('/students')})
 })

@@ -15,6 +15,7 @@
           <th> ID </th>
           <th> Subject Name</th>
           <th> Teacher</th>
+          <th> Actions </th>
         </tr>
         <%subject_data.forEach(s => { %>
           <tr>
@@ -23,6 +24,7 @@
             <td><%var i = 1; s.Teachers.forEach(t => { %>
                 <%=i++ %>. <%= t.first_name %> <%=t.last_name %><br>
                 <% }) %></td>
+            <td><a href="/subjects/<%=s.id%>/enrolledstudents">Enrolled Students</a></td>
           </tr>
         <% }) %>
       </table>
