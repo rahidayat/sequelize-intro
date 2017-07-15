@@ -10,6 +10,7 @@
 
     <h1><%= enrolled_data[0].Subject.subject_name %></h1>
 
+
     <a href="/subjects">All Subjects List</a>
 
     <div class="title">
@@ -21,9 +22,9 @@
         <%enrolled_data.forEach(e => { %>
         <tr>
             <td><%=e.Student.first_name%> <%=e.Student.last_name%></td>
-            <td><% if (e.score==undefined) { %>
-              <a href="/subjects/<%=e.Subject.id %>/givescore">Give Score</a>
-          <%  } else{e.score} %>
+            <td><% if (e.score==null) { %>
+              <a href="/subjects/<%=e.id %>/givescore">Give Score</a>
+          <%  } else{%><%=e.score%><%} %>
               </td>
         </tr>
         <% }) %>

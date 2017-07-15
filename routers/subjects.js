@@ -29,23 +29,35 @@ router.post('/add', (req, res) => {
 router.get('/:id/enrolledstudents', (req, res) => {
   model.StudentSubject.findAll({
     where: {SubjectId: req.params.id},
-    include: [{all: true}]
+    include: [{all: true}],
+    order:[['Student','first_name', 'ASC']]
   })
   .then(row => {
-      res.render('enrolledstudents', {enrolled_data: row})
+    res.render('enrolledstudents', {enrolled_data: row})
       // console.log('---++--------+++'+row);
-    })
+  })
 })
 
 router.get('/:id/givescore', (req, res) => {
-  model.Student.findById({
+  model.StudentSubject.findAll({
+    where: {id: req.params.id},
+    include: [{all: true}]
+  })
+  .then(row => {
+    res.render('givescore', {ss_data: row})
+  })
+})
+
+router.post('/:id/givescore', (req, res) => {
+  model.StudentSubject.update({
+    score: req.body.score,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },{
     where: {id: req.params.id}
   })
   .then(row => {
-    model.Subject.findAll()
-    .then(row2 => {
-        res.render('givescore', {students_data: row, subjects_data: row2})
-    })
+    res.redirect(`/subjects`)
   })
 })
 
