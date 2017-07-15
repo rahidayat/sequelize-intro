@@ -53,5 +53,23 @@ router.post('/edit/:id', (req, res) => {
   .catch(err => {email.validate.msg})
 })
 
+router.get('/:id/addsubject', (req, res) => {
+  model.Student.findAll({where: {id: req.params.id}})
+  .then(row => {
+    model.Subject.findAll()
+    .then(row2 => {
+      res.render('add-subject-to-student', {students_data: row, subjects_data:row2})
+    })
+  })
+})
+
+router.post('/:id/addsubject', (req,res) => {
+  model.Student.update(req.body, {
+    where: {id: req.params.id}
+  })
+  .then(row => {res.redirect('/students')})
+})
+
+
 
 module.exports = router

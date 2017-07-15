@@ -40,7 +40,7 @@ router.get('/edit/:id', (req, res) => {
     model.Subject.findAll()
       .then(row2 => {
         res.render('edit-teachers', {teachers_data: row, subjects_data:row2})
-      })
+    })
   })
 })
 
