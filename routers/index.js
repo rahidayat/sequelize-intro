@@ -8,7 +8,16 @@ router.get('/', function (req, res) {
   })
 })
 
+router.get('/login', function(req, res) {
+  res.render('login', {
+    title: 'Login User'
+  })
+})
 
+router.use(function (req, res, next) {
+  console.log('Time:', Date.now())
+  next()
+})
 
 
 module.exports = router
