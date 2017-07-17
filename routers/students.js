@@ -8,12 +8,16 @@ router.get('/', (req, res) => {
   })
   .then(row => {
     // res.send(row)
-    res.render('students', {students_data: row})
+    res.render('students', {
+      title: 'Data Students',
+      students_data: row})
   })
 })
 
 router.get('/add', (req, res) => {
-    res.render('add-students')
+    res.render('add-students', {
+      title: 'Add Student'
+    })
 })
 
 router.post('/add', (req, res) => {

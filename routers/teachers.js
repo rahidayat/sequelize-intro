@@ -8,7 +8,9 @@ router.get('/', (req, res) => {
     order:[['first_name', 'ASC']]
   })
   .then(row => {
-    res.render('teachers', {teacher_data: row})
+    res.render('teachers', {
+      title: 'Data Teachers',
+      teacher_data: row})
   })
 })
 

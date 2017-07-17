@@ -1,13 +1,17 @@
 const express = require('express');
 const router = express.Router();
 const model = require ('../models');
+const huruf = require ('../helpers/scoreletter')
 
 router.get('/', (req, res) => {
   model.Subject.findAll({
     include: [model.Teacher]
   })
   .then(row => {
-    res.render('subjects', {subject_data: row});
+    res.render('subjects', {
+      title: 'Data Subject',
+      subject_data: row
+    });
     // console.log('--------'+JSON.stringify(row[0], null, 2))
   })
 })
@@ -33,7 +37,12 @@ router.get('/:id/enrolledstudents', (req, res) => {
     order:[['Student','first_name', 'ASC']]
   })
   .then(row => {
-    res.render('enrolledstudents', {enrolled_data: row})
+    row.forEach(r => {
+      r.letter = huruf (r.score)
+    })
+    res.render('enrolledstudents', {
+      title: 'Enrolled Students',
+      enrolled_data: row})
       // console.log('---++--------+++'+row);
   })
 })

@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const bodyParser = require('body-parser');
+// const partial = require('express-partial');
 
 
 const index = require ('./routers/index');
@@ -16,16 +17,12 @@ app.use(express_static);
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json());
+// app.use(partial());
 
 app.use('/', index);
 app.use('/teachers', guru);
 app.use('/subjects', subjek);
 app.use('/students', murid);
-// app.use('/contacts', kontak);
-// app.use('/groups', grup);
-// app.use('/profiles', profil);
-// app.use('/addresses', alamat);
-// app.use('/groups-contacts', grup_kontak);
 
 
 

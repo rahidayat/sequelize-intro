@@ -7,6 +7,7 @@
   </head>
 
   <body>
+    <%- include layout/menu-bar %>
     <h1>Input Score</h1>
     <form action="/subjects/<%=ss_data[0].id%>/givescore" method="post">
       Student Name: <%=ss_data[0].Student.first_name%> <%=ss_data[0].Student.last_name%> <br>

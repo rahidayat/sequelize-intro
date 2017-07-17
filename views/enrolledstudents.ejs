@@ -2,11 +2,12 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Add Subject to Student</title>
+    <%- include layout/page-title %>
     <link type="text/css" rel="stylesheet" href="/style.css">
   </head>
 
   <body>
+    <%- include layout/menu-bar %>
 
     <h1><%= enrolled_data[0].Subject.subject_name %></h1>
 
@@ -18,6 +19,7 @@
         <tr>
           <th>Name</th>
           <th>Score</th>
+          <th>Score Letter</th>
         </tr>
         <%enrolled_data.forEach(e => { %>
         <tr>
@@ -26,6 +28,7 @@
               <a href="/subjects/<%=e.id %>/givescore">Give Score</a>
           <%  } else{%><%=e.score%><%} %>
               </td>
+            <td><%=e.letter%></td>
         </tr>
         <% }) %>
       </table>
