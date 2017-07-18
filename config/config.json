@@ -1,7 +1,7 @@
 {
   "development": {
-    "username": "userbaru",
-    "password": "bebas",
+    "username": "postgres",
+    "password": "postgres",
     "database": "sekolah",
     "host": "localhost",
     "dialect": "postgres"
@@ -16,6 +16,6 @@
   },
   "production": {
     "use_env_variable": "DATABASE_url"
-    
+
   }
 }
