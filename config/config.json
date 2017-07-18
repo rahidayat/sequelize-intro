@@ -9,8 +9,8 @@
   },
 
   "production": {
-    "use_env_variable": "DATABASE_url",
-    "dialect": "postgres"
+    "use_env_variable": "DATABASE_URL",
+
 
   }
 }
